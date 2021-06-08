@@ -6,6 +6,6 @@ namespace DddExample.Domain.CustomerContext.Services
 {
     public interface ICustomerService
     {
-        Task<SimpleResult> CreateAsync(Customer customer);
+        Task<Result<Customer>> CreateAsync(Customer customer);
     }
 }

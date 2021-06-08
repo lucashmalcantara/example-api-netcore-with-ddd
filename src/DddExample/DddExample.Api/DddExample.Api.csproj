@@ -12,6 +12,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
@@ -20,6 +22,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DddExample.Domain\DddExample.Domain.csproj" />
+    <ProjectReference Include="..\DddExample.Infrastructure\DddExample.Infrastructure.csproj" />
+    <ProjectReference Include="..\DddExample.Services\DddExample.Services.csproj" />
   </ItemGroup>
 
 

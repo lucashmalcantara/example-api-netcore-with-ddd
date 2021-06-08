@@ -20,6 +20,9 @@ namespace DddExample.Api
         {
             services.AddControllers();
             services.AddSwaggerDependencies()
+                .AddMapperDependencies()
+                .AddRepositoriesDependencies()
+                .AddDomainServicesDependencies()
                 .AddHealthChecks();
         }
 

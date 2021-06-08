@@ -8,7 +8,7 @@ namespace DddExample.Services.CustomerContext
 {
     public class CustomerService : ICustomerService
     {
-        public Task<SimpleResult> CreateAsync(Customer customer)
+        public Task<Result<Customer>> CreateAsync(Customer customer)
         {
             throw new NotImplementedException();
         }
