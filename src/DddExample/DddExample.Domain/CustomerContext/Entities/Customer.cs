@@ -1,26 +1,28 @@
 ﻿using DddExample.Domain.CustomerContext.ValueObjects;
+using System;
 
 namespace DddExample.Domain.CustomerContext.Entities
 {
     public class Customer
     {
-        public Name Name { get; set; }
+        public Guid Id { get; set; }
+        public PersonName Name { get; set; }
         public Cpf Cpf { get; set; }
         public Email Email { get; set; }
+        public DateTime Birthdate { get; set; }
 
-        private string _segment;
-        public string Segment
+        public Customer(
+            Guid id,
+            PersonName name,
+            Cpf cpf,
+            Email email,
+            DateTime birthdate)
         {
-            get { return _segment; }
-            set { _segment = value?.ToUpper(); }
-        }
-
-
-        public Customer(Name name, Cpf cpf, Email email)
-        {
+            Id = id;
             Name = name;
             Cpf = cpf;
             Email = email;
+            Birthdate = birthdate;
         }
     }
 }

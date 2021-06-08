@@ -8,8 +8,8 @@ namespace DddExample.Api.V1.Controllers
 {
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("v{version:apiVersion}/clients")]
-    public class ClientsController : ControllerBase
+    [Route("v{version:apiVersion}/customers")]
+    public class CustomersController : ControllerBase
     {
         /// <summary>
         /// Get all clients.
