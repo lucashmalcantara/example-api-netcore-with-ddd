@@ -22,12 +22,12 @@ namespace DddExample.Api.ServicesCollections
             new List<Customer>
             {
                         new Customer(new PersonName("Lucas", "Alcântara"),
-                            new Cpf("1234567890"),
+                            new Cpf("12345678900"),
                             new Phone(31,"999999999"),
                             new Email("lucas@domain.com"),
                             new DateTime(1994,8,11)),
                         new Customer(new PersonName("Mikaelly", "Silva"),
-                            new Cpf("9876543210"),
+                            new Cpf("98765432100"),
                             new Phone(31,"988888888"),
                             new Email("mikaelly@domain.com"),
                             new DateTime(2000,1,1))
