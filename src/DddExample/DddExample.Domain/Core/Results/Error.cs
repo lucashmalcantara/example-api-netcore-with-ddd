@@ -1,4 +1,4 @@
-﻿namespace DddExample.Domain.Core
+﻿namespace DddExample.Domain.Core.Results
 {
     public class Error
     {

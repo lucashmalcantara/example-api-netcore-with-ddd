@@ -18,6 +18,10 @@ namespace DddExample.Api.V1.Mapping
                 .ForMember(dest => dest.Email, m => m.MapFrom(src => src.Email.ToString()));
 
             CreateMap<CustomerPostModel, Customer>()
+                .ForMember(dest => dest.Name, m => m.Ignore())
+                .ForMember(dest => dest.Cpf, m => m.Ignore())
+                .ForMember(dest => dest.Email, m => m.Ignore())
+                .ForMember(dest => dest.Phone, m => m.Ignore())
                 .ConstructUsing(src =>
                     new Customer(
                         new PersonName(src.FirstName, src.LastName),
@@ -25,7 +29,7 @@ namespace DddExample.Api.V1.Mapping
                         new Phone(src.PhoneAreaCode, src.PhoneNumber),
                         new Email(src.Email),
                        src.Birthdate)
-                    ); ;
+                    );
         }
     }
 }

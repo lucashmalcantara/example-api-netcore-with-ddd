@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using DddExample.Api.V1.Models.CustomerContext;
-using DddExample.Domain.Core;
+using DddExample.Domain.Core.Results;
 using DddExample.Domain.CustomerContext.Entities;
 using DddExample.Domain.CustomerContext.Repositories;
 using DddExample.Domain.CustomerContext.Services;
@@ -85,9 +85,7 @@ namespace DddExample.Api.V1.Controllers
             if (result.HasError)
                 return BadRequest(result.Errors);
 
-            var createdCustomer = _mapper.Map<Customer, CustomerGetModel>(result.Data);
-
-            return Created($"/customers/{createdCustomer.Id}", createdCustomer);
+            return Created($"/customers/{customer.Id}", customer);
         }
     }
 }

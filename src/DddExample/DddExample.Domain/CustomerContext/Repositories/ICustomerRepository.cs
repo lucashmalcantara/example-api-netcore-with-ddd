@@ -1,4 +1,4 @@
-﻿using DddExample.Domain.Core;
+﻿using DddExample.Domain.Core.Results;
 using DddExample.Domain.CustomerContext.Entities;
 using System;
 using System.Collections.Generic;
