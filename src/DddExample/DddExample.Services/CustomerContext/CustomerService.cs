@@ -1,31 +1,29 @@
 ﻿using DddExample.Domain.Core.Results;
+using DddExample.Domain.Core.Results.Extensions;
 using DddExample.Domain.CustomerContext.Entities;
 using DddExample.Domain.CustomerContext.Repositories;
 using DddExample.Domain.CustomerContext.Services;
-using DddExample.Domain.CustomerContext.Validators;
-using Microsoft.Extensions.Logging;
+using FluentValidation;
 using System.Threading.Tasks;
-using DddExample.Domain.Core.Results.Extensions;
 
 namespace DddExample.Services.CustomerContext
 {
     public class CustomerService : ICustomerService
     {
-        private readonly ILogger<CustomerService> _logger;
         private readonly ICustomerRepository _customerRepository;
+        private readonly IValidator<Customer> _customerValidator;
 
         public CustomerService(
-            ILogger<CustomerService> logger,
-            ICustomerRepository customerRepository)
+            ICustomerRepository customerRepository,
+            IValidator<Customer> customerValidator)
         {
-            _logger = logger;
             _customerRepository = customerRepository;
+            _customerValidator = customerValidator;
         }
 
         public async Task<SimpleResult> CreateAsync(Customer customer)
         {
-            var customerValidator = GetCustomerValidator();
-            var validationResult = customerValidator.Validate(customer);
+            var validationResult = _customerValidator.Validate(customer);
 
             if (!validationResult.IsValid)
                 return validationResult.Errors.ToErrorResult();
@@ -36,19 +34,6 @@ namespace DddExample.Services.CustomerContext
                 return SimpleResult.Error(createResult.Errors);
 
             return await Task.FromResult(SimpleResult.Ok());
-        }
-
-        //TODO Change to factory pattern.
-        private CustomerValidator GetCustomerValidator()
-        {
-            var personNameValidator = new PersonNameValidator();
-            var cpfValidator = new CpfValidator();
-            var emailValidator = new EmailValidator();
-
-            var customerValidator = new CustomerValidator(
-                personNameValidator, cpfValidator, emailValidator);
-
-            return customerValidator;
         }
     }
 }
