@@ -23,3 +23,7 @@
   - Nuget: Swashbuckle.AspNetCore
   - Para o correto funcionamento, demanda habilitar a opção *XML documentation file*. Para isso, siga os passos: (1) Botão direito no nome do projeto; (2) opção *Properties*; (3) guia *Build*; (4)  habilitar a opção ***XML documentation file***; (5) Adicionar o valor **1591** no campo ***Supress warnings*** separado por ponto e vírgula.
     - Referência: [XML Comments Swagger .Net Core](https://medium.com/c-sharp-progarmming/xml-comments-swagger-net-core-a390942d3329)
+
+# Referências
+
+[Converting integration tests to .NET Core 3.0](https://andrewlock.net/converting-integration-tests-to-net-core-3/)
