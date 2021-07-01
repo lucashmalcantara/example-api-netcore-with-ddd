@@ -23,6 +23,7 @@ namespace DddExample.IntegrationTests.Base
         [OneTimeTearDown]
         public void TearDown()
         {
+            HttpClient.Dispose();
             HttpClient = null;
         }
     }
