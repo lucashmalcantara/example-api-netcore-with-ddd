@@ -27,3 +27,4 @@
 # Referências
 
 [Converting integration tests to .NET Core 3.0](https://andrewlock.net/converting-integration-tests-to-net-core-3/)
+[Integration Testing with ASP.NET Core 3.1 - Remove the Boiler Plate](https://adamstorr.azurewebsites.net/blog/integration-testing-with-aspnetcore-3-1-remove-the-boiler-plate)

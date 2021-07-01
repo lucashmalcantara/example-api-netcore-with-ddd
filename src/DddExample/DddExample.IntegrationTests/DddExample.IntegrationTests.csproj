@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="AutoBogus" Version="2.13.0" />
     <PackageReference Include="FakeItEasy" Version="7.1.0" />
+    <PackageReference Include="FluentAssertions.Web" Version="1.0.138" />
     <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="3.1.16" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="NUnit" Version="3.12.0" />

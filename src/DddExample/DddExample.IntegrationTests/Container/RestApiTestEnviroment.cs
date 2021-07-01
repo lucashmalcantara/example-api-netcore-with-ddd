@@ -1,5 +1,6 @@
 ﻿using DddExample.Api;
 using DddExample.Api.Middlewares;
+using DddExample.Domain.CustomerContext.Repositories;
 using DddExample.Domain.CustomerContext.Services;
 using DddExample.Infrastructure.Logging.Interfaces;
 using Microsoft.AspNetCore.Hosting;
@@ -32,13 +33,14 @@ namespace DddExample.IntegrationTests.Container
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseTestServer();
+                    webBuilder.UseStartup<Startup>();
                     webBuilder.ConfigureTestServices(services =>
                     {
                         services.AddTransientWithFaker<IBasicLogger<EntryPointMiddleware>>();
                         services.AddTransientWithFaker<IBasicLogger<GlobalExceptionHandlerMiddleware>>();
+                        services.AddTransientWithFaker<ICustomerRepository>();
                         services.AddTransientWithFaker<ICustomerService>();
                     });
-                    webBuilder.UseStartup<Startup>();
                 });
 
             TestServerApi = await hostBuilder.StartAsync();
