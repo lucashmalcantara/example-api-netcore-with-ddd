@@ -1,29 +1,30 @@
 ﻿using DddExample.Api.Constants;
 using DddExample.IntegrationTests.Base;
 using FluentAssertions;
-using Newtonsoft.Json.Linq;
 using NUnit.Framework;
+using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace DddExample.IntegrationTests.Tests.Api
+namespace DddExample.IntegrationTests.Tests.Api.ApplicationBuilders
 {
-    public class ApplicationBuilders : ControllerTestBase
+    public class SwaggerBuilderTests : ControllerTestBase
     {
         [Test]
         public async Task Swagger_should_be_started()
         {
             // Arrange
-            JObject root;
+            JsonDocument root;
 
             // Act
             using (HttpClient)
             {
                 var result = await HttpClient.GetStringAsync($"{ApplicationConstants.ApplicationPathBase}/swagger/v1/swagger.json");
-                root = JObject.Parse(result);
+                root = JsonDocument.Parse(result);
             }
 
             // Assert
-            root.Should().NotBeNull().And.NotBeEmpty();
+            root.Should().NotBeNull();
+            root.RootElement.GetRawText().Should().NotBeEmpty();
         }
     }
 }
