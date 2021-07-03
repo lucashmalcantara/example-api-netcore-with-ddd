@@ -17,6 +17,12 @@
 
 
 
+# Boas práticas de teste
+
+- Não utilize variáveis usadas no ACT para fazer o ASSERT. Os objetos no C# utilizam referência de memória e podem ter o seu estado alterado, gerando falsos positivos no momento do ASSERT. Este é apenas um dos problemas que podem ser causados pelo reaproveitamento de objetos do ACT no ASSERT.
+
+
+
 # Principais bibliotecas utilizadas
 
 - Documentação da API: Swagger
