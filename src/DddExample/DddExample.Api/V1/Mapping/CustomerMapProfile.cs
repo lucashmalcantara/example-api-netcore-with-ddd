@@ -9,7 +9,7 @@ namespace DddExample.Api.V1.Mapping
     {
         public CustomerMapProfile()
         {
-            CreateMap<Customer, CustomerGetModel>()
+            CreateMap<Customer, CustomerGetResultModel>()
                 .ForMember(dest => dest.FirstName, m => m.MapFrom(src => src.Name.FirstName))
                 .ForMember(dest => dest.LastName, m => m.MapFrom(src => src.Name.LastName))
                 .ForMember(dest => dest.Cpf, m => m.MapFrom(src => src.Cpf.ToString()))
@@ -17,7 +17,7 @@ namespace DddExample.Api.V1.Mapping
                 .ForMember(dest => dest.PhoneNumber, m => m.MapFrom(src => src.Phone.Number))
                 .ForMember(dest => dest.Email, m => m.MapFrom(src => src.Email.ToString()));
 
-            CreateMap<CustomerPostModel, Customer>()
+            CreateMap<CustomerPostRequestModel, Customer>()
                 .ForMember(dest => dest.Name, m => m.Ignore())
                 .ForMember(dest => dest.Cpf, m => m.Ignore())
                 .ForMember(dest => dest.Email, m => m.Ignore())

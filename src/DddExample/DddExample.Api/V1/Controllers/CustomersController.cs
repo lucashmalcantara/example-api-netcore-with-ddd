@@ -37,7 +37,7 @@ namespace DddExample.Api.V1.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        [ProducesResponseType(typeof(CustomerGetModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CustomerGetResultModel), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(IReadOnlyCollection<Error>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(IReadOnlyCollection<Error>), StatusCodes.Status500InternalServerError)]
@@ -51,13 +51,13 @@ namespace DddExample.Api.V1.Controllers
             if (result.Data == null)
                 return NotFound();
 
-            var customerModel = _mapper.Map<Customer, CustomerGetModel>(result.Data);
+            var customerModel = _mapper.Map<Customer, CustomerGetResultModel>(result.Data);
 
             return Ok(customerModel);
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<CustomerGetModel>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<CustomerGetResultModel>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(IReadOnlyCollection<Error>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(IReadOnlyCollection<Error>), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAllAsync()
@@ -67,7 +67,7 @@ namespace DddExample.Api.V1.Controllers
             if (result.HasError)
                 return BadRequest(result.Errors);
 
-            var customerModels = _mapper.Map<IEnumerable<Customer>, IEnumerable<CustomerGetModel>>(result.Data);
+            var customerModels = _mapper.Map<IEnumerable<Customer>, IEnumerable<CustomerGetResultModel>>(result.Data);
 
             return Ok(customerModels);
         }
@@ -76,9 +76,9 @@ namespace DddExample.Api.V1.Controllers
         [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(IReadOnlyCollection<Error>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(IReadOnlyCollection<Error>), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> PostAsync(CustomerPostModel customerModel)
+        public async Task<IActionResult> PostAsync(CustomerPostRequestModel customerModel)
         {
-            var customer = _mapper.Map<CustomerPostModel, Customer>(customerModel);
+            var customer = _mapper.Map<CustomerPostRequestModel, Customer>(customerModel);
 
             var result = await _customerService.CreateAsync(customer);
 

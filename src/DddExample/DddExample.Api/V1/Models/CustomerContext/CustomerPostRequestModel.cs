@@ -2,7 +2,7 @@
 
 namespace DddExample.Api.V1.Models.CustomerContext
 {
-    public class CustomerPostModel
+    public class CustomerPostRequestModel
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
