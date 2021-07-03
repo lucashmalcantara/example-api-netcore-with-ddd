@@ -16,11 +16,8 @@ namespace DddExample.IntegrationTests.Tests.Api.ApplicationBuilders
             JsonDocument root;
 
             // Act
-            using (HttpClient)
-            {
-                var result = await HttpClient.GetStringAsync($"{ApplicationConstants.ApplicationPathBase}/swagger/v1/swagger.json");
-                root = JsonDocument.Parse(result);
-            }
+            var result = await HttpClient.GetStringAsync($"{ApplicationConstants.ApplicationPathBase}/swagger/v1/swagger.json");
+            root = JsonDocument.Parse(result);
 
             // Assert
             root.Should().NotBeNull();
