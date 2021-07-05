@@ -25,12 +25,12 @@ namespace DddExample.Api.ServicesCollections
                             new Cpf("12345678900"),
                             new Phone(31,"999999999"),
                             new Email("lucas@domain.com"),
-                            new DateTime(1994,8,11)),
+                            new DateTime(1900,8,11)),
                         new Customer(new PersonName("Mikaelly", "Silva"),
                             new Cpf("98765432100"),
                             new Phone(31,"988888888"),
                             new Email("mikaelly@domain.com"),
-                            new DateTime(2000,1,1))
+                            new DateTime(1900,1,1))
             };
     }
 }
