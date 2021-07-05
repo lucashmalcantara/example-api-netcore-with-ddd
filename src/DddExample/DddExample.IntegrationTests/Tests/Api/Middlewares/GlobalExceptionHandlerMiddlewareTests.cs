@@ -17,8 +17,6 @@ namespace DddExample.IntegrationTests.Tests.Api.Middlewares
 {
     public class GlobalExceptionHandlerMiddlewareTests : ControllerTestBase
     {
-        const string ZarpApplicationId = "30b96dc0-c82d-4100-8e6f-d113c35b82b3";
-
         [Test]
         public async Task Any_exception_should_be_logged_when_it_is_thrown_through_any_middleware_below_GlobalExceptionHandlerMiddleware()
         {

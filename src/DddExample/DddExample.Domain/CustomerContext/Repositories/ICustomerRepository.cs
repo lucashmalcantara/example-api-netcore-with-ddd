@@ -10,6 +10,6 @@ namespace DddExample.Domain.CustomerContext.Repositories
     {
         Task<SimpleResult> CreateAsync(Customer cliente);
         Task<Result<Customer>> GetByIdAsync(Guid id);
-        Task<Result<IEnumerable<Customer>>> GetAllAsync();
+        Task<Result<IList<Customer>>> GetAllAsync();
     }
 }

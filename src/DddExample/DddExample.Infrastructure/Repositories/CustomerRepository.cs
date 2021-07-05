@@ -28,9 +28,9 @@ namespace DddExample.Infrastructure.Repositories
             return await Task.FromResult(SimpleResult.Ok());
         }
 
-        public async Task<Result<IEnumerable<Customer>>> GetAllAsync()
+        public async Task<Result<IList<Customer>>> GetAllAsync()
         {
-            var result = Result<IEnumerable<Customer>>.Ok(_customerDatabase);
+            var result = Result<IList<Customer>>.Ok(_customerDatabase);
             return await Task.FromResult(result);
         }
 

@@ -4,7 +4,10 @@ namespace DddExample.Domain.Core.Results
 {
     public class Error
     {
+        [JsonPropertyName("propertyName")]
         public string PropertyName { get; set; }
+
+        [JsonPropertyName("message")]
         public string Message { get; set; }
 
         [JsonConstructor]
@@ -19,5 +22,7 @@ namespace DddExample.Domain.Core.Results
             PropertyName = null;
             Message = message;
         }
+
+        private Error() { }
     }
 }

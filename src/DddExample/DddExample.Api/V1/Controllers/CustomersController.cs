@@ -6,9 +6,9 @@ using DddExample.Domain.CustomerContext.Repositories;
 using DddExample.Domain.CustomerContext.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DddExample.Api.V1.Controllers
@@ -18,18 +18,15 @@ namespace DddExample.Api.V1.Controllers
     [Route("v{version:apiVersion}/customers")]
     public class CustomersController : ControllerBase
     {
-        private readonly ILogger<CustomersController> _logger;
         private readonly IMapper _mapper;
         private readonly ICustomerService _customerService;
         private readonly ICustomerRepository _customerRepository;
 
         public CustomersController(
-            ILogger<CustomersController> logger,
             IMapper mapper,
             ICustomerService customerService,
             ICustomerRepository customerRepository)
         {
-            _logger = logger;
             _mapper = mapper;
             _customerService = customerService;
             _customerRepository = customerRepository;
@@ -49,7 +46,7 @@ namespace DddExample.Api.V1.Controllers
                 return BadRequest(result.Errors);
 
             if (result.Data == null)
-                return NotFound();
+                return NoContent();
 
             var customerModel = _mapper.Map<Customer, CustomerGetResultModel>(result.Data);
 
@@ -67,13 +64,16 @@ namespace DddExample.Api.V1.Controllers
             if (result.HasError)
                 return BadRequest(result.Errors);
 
+            if (result.Data == null || !result.Data.Any())
+                return NoContent();
+
             var customerModels = _mapper.Map<IEnumerable<Customer>, IEnumerable<CustomerGetResultModel>>(result.Data);
 
             return Ok(customerModels);
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(CustomerGetResultModel), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(IReadOnlyCollection<Error>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(IReadOnlyCollection<Error>), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> PostAsync(CustomerPostRequestModel customerModel)

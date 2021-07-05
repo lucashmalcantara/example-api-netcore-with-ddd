@@ -3,7 +3,7 @@
 Este é um projeto de implementação de uma API .NET Core que aplica conceitos de Domain-Driven Design (DDD) e práticas de testes.
 
 ⚠️ **Atenção** ⚠️
-- O projeto ainda está em fase de implementação. Ainda serão acrescentados testes e outras ideias que estão faltando. 
+- **O projeto ainda está em fase de implementação**. Serão acrescentados testes e outras ideias que estão faltando. 
 - PRs são sempre bem-vindos, principalmente para finalizar a implementação dos testes que estão faltando 😉
 
 # Decisões de projeto
@@ -27,7 +27,7 @@ Algumas das práticas adotadas estão listadas logo abaixo, para mais profundida
   - Arrange: Organizar seus objetos, criando e configurando-os conforme necessário.
   - Act: agir em um objeto.
   - Assert: garantir que algo está como o esperado.
-- Não utilize variáveis usadas no ACT para fazer o ASSERT. Os objetos no C# utilizam referência de memória e podem ter o seu estado alterado, gerando falsos positivos no momento do ASSERT. Este é apenas um dos problemas que podem ser causados pelo reaproveitamento de objetos do ACT no ASSERT.
+- Tenha cuidado ao usar variáveis que podem ter seu estado alterado na etapa de ACT para fazer o ASSERT. Os objetos no C# utilizam referência de memória e podem ter o seu estado alterado, gerando falsos positivos no momento do ASSERT. Este é apenas um dos problemas que podem ser causados pelo reaproveitamento de objetos do ACT no ASSERT.
 
 
 # Principais bibliotecas utilizadas
