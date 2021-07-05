@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DddExample.Api\DddExample.Api.csproj" />
+    <ProjectReference Include="..\DddExample.Tests.Shared\DddExample.Tests.Shared.csproj" />
   </ItemGroup>
 
 </Project>

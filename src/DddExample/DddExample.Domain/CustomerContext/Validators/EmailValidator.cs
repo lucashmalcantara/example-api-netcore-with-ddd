@@ -18,8 +18,14 @@ namespace DddExample.Domain.CustomerContext.Validators
                 .Must(BeValidEmail).WithMessage("The email should be in standard format");
         }
 
-        private bool BeValidEmail(string value) =>
-            _emailRegex.IsMatch(value);
+        private bool BeValidEmail(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                return false;
+
+            return _emailRegex.IsMatch(value);
+        }
+
 
         private Regex CreateEmailRegex()
         {

@@ -14,6 +14,7 @@ namespace DddExample.Domain.CustomerContext.Validators
                 .Must(BeOnlyNumbers).WithMessage("CPF must have only numbers");
         }
 
-        private bool BeOnlyNumbers(string value) => Regex.IsMatch(value, "^\\d+");
+        private bool BeOnlyNumbers(string value) =>
+            !string.IsNullOrWhiteSpace(value) && Regex.IsMatch(value, "^\\d+$");
     }
 }

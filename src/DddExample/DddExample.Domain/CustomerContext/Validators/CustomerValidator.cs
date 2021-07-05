@@ -13,8 +13,8 @@ namespace DddExample.Domain.CustomerContext.Validators
             RuleFor(x => x.Cpf).SetValidator(new CpfValidator());
             RuleFor(x => x.Email).SetValidator(new EmailValidator());
             RuleFor(x => x.Birthdate)
-                .NotEmpty().WithMessage("The name should have a value")
-                .LessThanOrEqualTo(DateTime.Now).WithMessage("The birthdate date should not be in the future");
+                .NotEmpty().WithMessage("Birthdate should have a value")
+                .LessThanOrEqualTo(DateTime.Now).WithMessage("Birthdate date should not be in the future");
         }
     }
 }
