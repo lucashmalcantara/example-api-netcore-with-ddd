@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DddExample.Api</name>
+    </assembly>
+    <members>
+        <member name="M:DddExample.Api.V1.Controllers.ClientsController.GetAll">
+            <summary>
+            Get all clients.
+            </summary>
+            <returns>A list of clients.</returns>
+        </member>
+    </members>
+</doc>
