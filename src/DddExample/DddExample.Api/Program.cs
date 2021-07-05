@@ -1,11 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace DddExample.Api
 {
@@ -13,6 +9,7 @@ namespace DddExample.Api
     {
         public static void Main(string[] args)
         {
+            SetMinThreads();
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -22,5 +19,14 @@ namespace DddExample.Api
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+        public static void SetMinThreads()
+        {
+            var minThreadsWorker = Convert.ToInt32(Environment.GetEnvironmentVariable("THREADS_MIN_WORKER"));
+            var minThreadsIo = Convert.ToInt32(Environment.GetEnvironmentVariable("THREADS_MIN_IO"));
+
+            if (minThreadsWorker != 0 && minThreadsIo != 0)
+                ThreadPool.SetMinThreads(minThreadsWorker, minThreadsIo);
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace DddExample.Api
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration) => 
+        public Startup(IConfiguration configuration) =>
             Configuration = configuration;
 
         public IConfiguration Configuration { get; }
@@ -19,13 +19,19 @@ namespace DddExample.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSwaggerDependencies()
+            services.AddHttpContextAccessor()
+                .AddCustomLoggerDependencies()
+                .AddSwaggerDependencies()
+                .AddMapperDependencies()
+                .AddRepositoriesDependencies()
+                .AddDomainServicesDependencies()
                 .AddHealthChecks();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
             app.UseStaticFiles()
+                .UseCustomMiddlewaresDependencies()
                 .UsePathBase(ApplicationConstants.ApplicationPathBase)
                 .UseCustomSwagger(provider)
                 .UseHttpsRedirection()

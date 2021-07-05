@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace DddExample.Domain.Core
+namespace DddExample.Domain.Core.Results
 {
     public class SimpleResult
     {
